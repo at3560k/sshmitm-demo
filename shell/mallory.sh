@@ -1,15 +1,16 @@
 #!/bin/bash
 
+# FUCK wireshark-common via tshark FOR IGNORING DFE!
+
 sudo apt-get update
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y libssl-dev \
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y dos2unix \
+    libssl-dev \
     python3-netaddr \
     python3-netifaces \
     nmap \
     ettercap-text-only \
     tshark \
-    dsniff \
-    python3-netaddr \
-    python3-netifaces
+    dsniff 
 echo 'ubuntu:vagrant1' | sudo chpasswd
 cp -ar /vagrant/ssh-mitm ~/
 cd ~/ssh-mitm && sudo ./install.sh
